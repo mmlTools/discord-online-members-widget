@@ -1,0 +1,97 @@
+
+
+#DiscordWidget{
+    width:350px;
+    @media (max-width: 1200px) {
+        width:350px;
+    }
+    @media (max-width: 992px) {
+        width:350px;
+    }
+    @media (max-width: 768px) {
+        width:350px;
+    }
+    @media (max-width: 576px) {
+        width:350px;
+    }
+    &.content-box{
+        background: url(../img/media.png);
+        padding: 1rem;
+        border-radius: 0.25rem;
+        box-shadow: 0 0 20px #000;
+        .header{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #9d9375;
+            margin-bottom: 1rem;
+            span{
+                &:first-child{
+                    font-size:1.8rem;
+                    font-weight: bold;
+                    margin-bottom:.5rem;
+                }
+                &:last-child{
+                    font-size: 1.4rem;
+                }
+            }
+        }
+        .content{
+            display: flex;
+            flex-direction: column;
+            .discord-member{
+                display: flex;
+                position: relative;
+                align-items: center;
+                justify-content: flex-start;
+                align-content: center;
+                padding: 0.35rem;
+                background: #302c26;
+                margin-bottom: 1rem;
+                border-radius: 0.25rem;
+                box-shadow: 0 0 10px #81735b29;
+                color: #ddddcd;
+                -webkit-transition: .3s all;
+                -moz-transition: .3s all;
+                -ms-transition: .3s all;
+                -o-transition: .3s all;
+                transition: .3s all;
+                &:hover{
+                    cursor: pointer;
+                    box-shadow: 0 0 15px #81735b8a;
+                    &:hover{
+                        .discord-avatar{
+                            transform: rotate(360deg);
+                        }
+                    }
+                }
+                .discord-avatar{
+                    width:40px;
+                    height:40px;
+                    margin-right: 1rem;
+                    border-radius: 100%;
+                    transition: transform .7s ease-in-out;
+                }
+            }
+        }
+        .widget-footer{
+            a{
+                text-decoration: none;
+                background: #6c4444;
+                padding: 1rem 1rem;
+                border-radius: 0.25rem;
+                display: block;
+                color: #fff;
+                text-align: center;
+                -webkit-transition: .3s all;
+                -moz-transition: .3s all;
+                -ms-transition: .3s all;
+                -o-transition: .3s all;
+                transition: .3s all;
+                &:hover{
+                    background: #743c3c;
+                }
+            }
+        }
+    }
+}
