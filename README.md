@@ -27,7 +27,7 @@ GetTotalActiveMembers()
 GetMembersList($status = null)
 
 // Returns members list rendered html
-renderMembersList($results = 10, $status = null, $rand = true)
+RenderMembersList($results = 10, $status = null, $rand = true)
 
 // Returns the whole json data to use it wherever you want
 GetData()

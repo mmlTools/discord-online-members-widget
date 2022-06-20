@@ -81,7 +81,7 @@ class DiscordWidgetParser  {
      * @param bool $rand - show random members true/false
      * @return string
      */
-    public function renderMembersList($results = 10, $status = null, $rand = true){
+    public function RenderMembersList($results = 10, $status = null, $rand = true){
         $str = "";
         foreach ($rand ? array_rand($this->GetMembersList($status), $results) : $this->GetMembersList($status) as $i):
             $user = $this->GetMembersList()[$i];
