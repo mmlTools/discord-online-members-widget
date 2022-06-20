@@ -21,8 +21,9 @@ class DiscordWidgetParser  {
      * @throws \Exception
      */
     private function FetchData(){
-        if(!isset($this->widget_url) || !filter_var($this->widget_url, FILTER_VALIDATE_URL))
+        if(!isset($this->widget_url) || !filter_var($this->widget_url, FILTER_VALIDATE_URL)):
             throw new \Exception('Invalid Widget URL');
+        endif;
 
         $this->serverData = json_decode(file_get_contents($this->widget_url), false);
     }
@@ -49,20 +50,48 @@ class DiscordWidgetParser  {
     }
 
     /**
-     * Status Online, Idle, & Offline
+     * @return int
+     */
+    public function GetTotalActiveMembers(){
+        return count($this->GetMembersList());
+    }
+
+    /**
+     * Status Online, Idle
      * @param null $status
      * @return array
      */
-    public function GetMembers($status = null){
+    public function GetMembersList($status = null){
         if(!$status)
             return $this->serverData->members;
 
         $result = [];
-        foreach ($this->serverData->members as $i)
-            if($i->status == strtolower($status))
+        foreach ($this->serverData->members as $i):
+            if($i->status == strtolower($status)):
                 $result[] = $i;
+            endif;
+        endforeach;
 
         return $result;
+    }
+
+    /**
+     * @param int $results - how many members to show in list
+     * @param null $status - idle/online
+     * @param bool $rand - show random members true/false
+     * @return string
+     */
+    public function renderMembersList($results = 10, $status = null, $rand = true){
+        $str = "";
+        foreach ($rand ? array_rand($this->GetMembersList($status), $results) : $this->GetMembersList($status) as $i):
+            $user = $this->GetMembersList()[$i];
+            $str .= '<div class="discord-member">';
+            $str .= '    <div class="discord-avatar" style="background: url("'.$user->avatar_url.'") no-repeat"></div>';
+            $str .= '    <div class="discord-username">'.$user->username.'</div>';
+            $str .= '</div>';
+        endforeach;
+
+        return $str;
     }
 
     /**

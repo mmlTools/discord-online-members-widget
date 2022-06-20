@@ -11,18 +11,24 @@ $widget = new \src\DiscordWidgetParser('YOUR DISCORD WIDGET JSON URL');
 ```
 - Use the functions inside as follows
 ```php
-// Returns an auto generated invite link, usable for join buttons
-public function GetInviteLink()
+// Returns server invite url
+GetInviteLink()
 
-// Returns your server id
-public function GetServerId()
+// Returns server id
+GetServerId()
 
-// Returns your server name, good in case you print it and change the name afterward
-public function GetServerName()
+// Returns server name
+GetServerName()
 
-//Returns an ojbect of members, you can parse the status, onlin or idle
-public function GetMembers($status = null)
+// Returns total online and idle members
+GetTotalActiveMembers()
 
-// Returns the whole data from the url
-public function GetData()
+// Returns members list array
+GetMembersList($status = null)
+
+// Returns members list rendered html
+renderMembersList($results = 10, $status = null, $rand = true)
+
+// Returns the whole json data to use it wherever you want
+GetData()
 ```

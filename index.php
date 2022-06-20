@@ -39,15 +39,10 @@ $widget = new \src\DiscordWidgetParser('https://discord.com/api/guilds/334821910
         <div id="DiscordWidget" class="content-box">
             <div class="header">
                 <span><?= $widget->GetServerName() ?></span>
-                <span>Users online - <?= count($widget->GetMembers()) ?> -</span>
+                <span>Users online - <?= $widget->GetTotalActiveMembers() ?> -</span>
             </div>
             <div class="content">
-                <?php foreach (array_rand($widget->GetMembers(), 5) as $i): $user = $widget->GetMembers()[$i]?>
-                    <div class="discord-member">
-                        <div class="discord-avatar" style="background: url('<?= $user->avatar_url ?>') no-repeat"></div>
-                        <div class="discord-username"><?= $user->username ?></div>
-                    </div>
-                <?php endforeach; ?>
+                <?= $widget->RenderMembersList(12) ?>
             </div>
             <div class="widget-footer">
                 <a href="<?= $widget->GetInviteLink() ?>" target="_blank" class="discord-btn">Join now on our discord channel</a>
